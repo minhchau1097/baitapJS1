@@ -14,16 +14,18 @@
  */
 
 
-var luong1Ngay = 100.000;
-
+var luong1Ngay = 100000;
+var donVi = new Intl.NumberFormat('vn-VN');
 
 var tinhLuong = document.getElementById('tinhLuong');
 tinhLuong.onclick = function () {
     var soNgayLam = document.getElementById('soNgayLam').value;
 
-    soNgayLam = luong1Ngay * soNgayLam;
+    var tongLuong = luong1Ngay * soNgayLam;
 
-    var tongLuong = ('Tổng lương là :' + soNgayLam);
+    tongLuong = ('Tổng lương là : ' + donVi.format(tongLuong) + 'đ');
+
+
     document.getElementById('tongLuong').innerHTML = tongLuong;
 
 };
@@ -77,13 +79,13 @@ tinhTB.onclick = function () {
 
 
 var USD = 23500;
-new Intl.NumberFormat('USD').format(USD);
+var doiUSD = new Intl.NumberFormat('vn-VN');
 var quyDoi = document.getElementById('quyDoi');
 quyDoi.onclick = function () {
     var soTien = document.getElementById('soTien').value;
     var giaTriQD = document.getElementById('giaTriQD');
     giaTriQD = soTien * USD;
-    giaTriQD = ("Giá trị quy đổi là : " + giaTriQD);
+    giaTriQD = ("Giá trị quy đổi là : " + doiUSD.format(giaTriQD)) + 'đ';
     document.getElementById('giaTriQD').innerHTML = giaTriQD;
 };
 
@@ -107,15 +109,15 @@ quyDoi.onclick = function () {
 
 
 var tinh = document.getElementById('tinh');
-tinh.onclick = function(){
-    var chieuDai = document.getElementById('chieuDai').value *1;
-    var chieuRong = document.getElementById('chieuRong').value *1;
+tinh.onclick = function () {
+    var chieuDai = document.getElementById('chieuDai').value * 1;
+    var chieuRong = document.getElementById('chieuRong').value * 1;
     var dienTich = chieuDai * chieuRong;
-    var chuVi = (chieuDai + chieuRong) *2;
+    var chuVi = (chieuDai + chieuRong) * 2;
     var ketQuaTinh = ('Diện tích là : ' + dienTich) + ('; Chu vi là : ' + chuVi);
-    
-     document.getElementById('ketQuaTinh').innerHTML = ketQuaTinh;                                                                                                     
-                                                                                                       
+
+    document.getElementById('ketQuaTinh').innerHTML = ketQuaTinh;
+
 };
 
 
@@ -136,9 +138,9 @@ tinh.onclick = function(){
  */
 
 var tinhTong = document.getElementById('tinhTong');
-tinhTong.onclick = function(){
-    var kiSo = document.getElementById('kiSo').value *1;
-    var hangChuc = Math.floor (kiSo / 10);
+tinhTong.onclick = function () {
+    var kiSo = document.getElementById('kiSo').value * 1;
+    var hangChuc = Math.floor(kiSo / 10);
     var hangDonVi = kiSo % 10;
     var tongKiso = hangChuc + hangDonVi;
     tongKiso = ('Tổng kí số là : ' + tongKiso);
